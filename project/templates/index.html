@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <!-- App's own CSS -->
+        <link href="/static/styles.css" rel="stylesheet"/>
+
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset="utf-8"/>
+        <meta content="initial-scale=1, width=device-width" name="viewport"/>
+
+        <!-- http://getbootstrap.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- http://jquery.com/ -->
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <!-- http://getbootstrap.com/ -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- app's own javascript -->
+        <script src="/static/calculator.js"></script>
+
+        <title>Hängemattenrechner</title>
+
+    </head>
+
+    <body>
+        <!-- form to enter all inputs for calculation -->
+        <div class="container">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="abstandwaende" id="waende">Abstand der Aufhängepunkte:</label>
+                        <div class="input-group">
+                            <input type="number" autofocus class="form-control" id="abstandwaende" min="0" step="10"/>
+                            <div class="input-group-addon">cm</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="winkel">Winkel zur Horizontalen:</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="winkel" min="0" step="5"/>
+                            <div class="input-group-addon">°</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <label for="sitzhoehe">Gewünschte Sitzhöhe:</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="sitzhoehe" min="0" step="10"/>
+                            <div class="input-group-addon">cm</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="gewicht">Gewicht in der Hängematte:</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="gewicht" min="0" step="5"/>
+                        <div class="input-group-addon">kg</div>
+                    </div>
+                </div>
+
+                  <div class="form-group">
+                    <div class="col-sm-5">
+                        <label for="laengehaengematte" id="hoehe">
+                            <select class="form-control" id="haengelaenge">
+                                <option value="laengehaengematte" class="option">Länge der Hängematte</option>
+                                <option value="laengeridgeline" class="option">Länge der Ridgeline</option>
+                            </select>
+                            <div class="small"><a href="https://www.haengematte.org/faq/#was-ist-eine-ridgeline" target="_blank">Was ist eine Ridgeline?</a></div>
+                        </label>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="input-group" id="input-laenge">
+                            <input type="number" class="form-control" id="laenge" min="0" step="5"/>
+                            <div class="input-group-addon">cm</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- button that triggers calculations -->
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <button type="button" class="btn btn-info" id="bluebutton" onclick="calculate()">Aufhängehöhe und Belastung berechnen</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- results table -->
+        <div class="panel panel-default" id="results">
+            <div class="panel-heading">Ergebnisse</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">Aufhängehöhe:</div>
+                    <div class="col-sm-2" id="statichoehe"></div>
+                    <div class="col-sm-4">Querkraft:</div>
+                    <div class="col-sm-2" id="staticquerkraft"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">Seilspannung:</div>
+                    <div class="col-sm-2" id="staticseilspannung"></div>
+                    <div class="col-sm-4">Länge der Aufhängung:
+                        <br>
+                        <div id="tiny">(beidseitig)</div>
+                    </div>
+                    <div class="col-sm-2" id="staticlaengeaufhaengung"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- image of hammock that should contain inputs and results -->
+        <div class="center-block" id="imageBlock">
+            <img src="https://www.haengematte.org/wp-content/uploads/2018/11/aufhaengen-1.png" class="img-responsive" alt="Hängemattenrechner">
+
+            <!-- inputs and results to be displayed -->
+            <div class="eingabe" id="eingabewaende"></div>
+            <div class="eingabe" id="eingabewinkel"></div>
+            <div class="eingabe" id="eingabehoehe"></div>
+            <div class="eingabe" id="eingabegewicht"></div>
+            <div class="eingabe" id="eingabelaengehaenge"></div>
+            <div class="eingabe" id="eingabelaengeridge"></div>
+
+            <!-- display of calculated results -->
+            <div class="ergebnis" id="ergebnishoehe"></div>
+            <div class="ergebnis" id="ergebnisquerkraft"></div>
+            <div class="ergebnis" id="ergebnisseilspannung"></div>
+            <div class="ergebnis" id="ergebnislaengeaufhaengung"></div>
+        </div>
+
+    </body>
+
+</html>
