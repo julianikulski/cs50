@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+<table class="container p-5">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Transaction type</th>
+                <th>Timestamp</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in everything %}
+                <tr>
+                {% for i in item.values() %}
+                    <td>{{ i }}</td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
